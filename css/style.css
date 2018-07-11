@@ -1,0 +1,19 @@
+body {
+		background-color: #cfcbbf;
+		background-image: url(/images/bg4_2.png);
+}
+
+#SignupContent {
+		max-width: 600px;
+		backgroud-color: white;
+		border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+		#SignupContent {
+				height: 100%;
+		}
+	#materialToolbar {
+		    padding: 10px;
+	}
+}
