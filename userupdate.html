@@ -1,0 +1,292 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<style>
+#dept{
+ width:175px;   
+}
+#desi{
+ width:175px;   
+}
+#gender{
+ width:175px;   
+}
+#name{
+ width:175px;   
+}
+#email{
+ width:175px;   
+}
+#staffid{
+ width:175px;   
+}
+#mobilenumber{
+ width:175px;   
+}
+#casualavail{
+ width:175px;   
+}
+#dob{
+ width:175px;   
+}
+#leavelayer{
+ width:175px;   
+}
+#permissionlayer{
+ width:175px;   
+}
+#vacationavail{
+ width:175px;   
+}
+#ondutyavail{
+ width:175px;   
+}
+#permissionavail{
+ width:175px;   
+}
+#casual{
+ width:175px;   
+}
+#vacation{
+ width:175px;   
+}
+#onduty{
+ width:175px;   
+}
+#permission{
+ width:175px;   
+}
+#llb{
+ width:175px;   
+}
+#compensation{
+ width:175px;   
+}
+
+</style>
+</head>
+<script>
+$(document).ready(function(){
+	$.get("/userid",function(data){
+		//console.log(data);
+		//console.log(data.name);
+		$("#message").html('Update '+data.name+' Profile');
+		$("#id").html(data.id);
+	});
+});
+</script>
+<script>
+/*
+$(function () {
+    $("#user_profile_form").submit(function(event) {
+      event.preventDefault();
+	  var id: $('#id').val()
+      var postData = {
+        name: $('#name').val(),
+        casualavail: $('#casualavail').val(),
+		dept: $('#dept').val(),
+		desi: $('#desi').val(),
+		staffid: $('#staffid').val(),
+		email: $('#email').val(),
+		mobilenumber: $('#mobilenumber').val(),
+		gender: $('#gender').val(),
+		dob: $('#dob').val(),
+		compensation: $('#compensation').val(),
+		llb: $('#llb').val(),
+		casualavail: $('#casualavail').val(),
+		vacationavail: $('#vacationavail').val(),
+		ondutyavail: $('#ondutyavail').val(),
+		permissionavail: $('#permissionavail').val(),
+		casual: $('#casual').val(),
+		vacation: $('#vacation').val(),
+		onduty: $('#onduty').val(),
+		permission: $('#permission').val()
+        
+      };
+	  console.log(id);
+	  console.log(postdata);
+      $.post("/updateuser/"+id+, postData,function(data) {
+		console.log(data);
+		
+				});
+		
+          
+	   
+    });
+		
+});
+*/
+</script>
+
+<body>
+
+	
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+	<div>
+<center><h2><div id="message"></div></h2></center></div>
+
+	  </div><center>
+	  <br><br>
+  
+
+<form action="/updateuser" method="post">
+<center>
+<table width="900" id="mytable" >
+
+  <tr>
+<td width="150"><strong>Name</strong></td>
+<td width="150"><input type="text" name="name" placeholder="Name" id="name"></td>
+
+<td width="150"><strong>Casual Available</strong></td>
+<td width="150"><input type="text" name="casualavail" id="casualavail" placeholder="casual avail" id="casualavail"></td>
+
+</tr>
+
+<tbody>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Department</strong></td>
+<td width="150"><select width="200" name="dept" id="dept">
+												<option value="hide">Department</option>
+												  <option value="ece">ECE</option>
+												  <option value="eee">EEE</option>
+												  <option value="mech">Mech</option>
+												  <option value="cse">CSE</option>
+												  <option value="ice">ICE</option>
+												  <option value="civil">Civil</option>
+												  <option value="auto">Auto</option>
+												  <option value="office">office</option>
+												  <option value="all">All</option>
+												</select></td>
+												
+<td width="150"><strong>Vacation Available</strong></td>
+<td width="150"><input type="text" name="vacationavail" id="vacationavail" placeholder="vacation avail"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr><tr>
+<td width="100"><strong>Designation</strong></td>
+<td width="150"><select name="desi" id="desi">
+												<option value="">Desigination</option>
+												<option value="office">Office</option>
+												  <option value="ae">Professor</option>
+												  <option value="hod">HOD</option>
+												  <option value="principal">Principal</option>
+												  <option value="co">Co</option>
+												</select></td>
+												
+<td width="150"><strong>Onduty Available</strong></td>
+<td width="150"><input type="text" name="ondutyavail" id="ondutyavail" placeholder="onduty avail"></td>
+
+</tr>
+ <tr><td>&nbsp;</td></tr><tr>
+<td width="100"><strong>Username</strong></td>
+<td width="150"><input type="text" name="email" id="email" placeholder="Username"></td>
+
+<td width="150"><strong>Permission Available</strong></td>
+<td width="150"><input type="text" name="permissionavail" id="permissionavail" placeholder="permission avail"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Staffid</strong></td>
+<td width="150"><input type="text" name="staffid" id="staffid" placeholder="staffid"></td>
+<td width="150"><strong>Casual Availed</strong></td>
+<td width="150"><input type="text" name="casual" id="casual" placeholder="casual Taken"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Mobile Number</strong></td>
+<td width="150"><input type="text" name="mobilenumber" id="mobilenumber" placeholder="mobnumber"></td>
+<td width="150"><strong>Vacation Taken</strong></td>
+<td width="150"><input type="text" name="vacation" id="vacation" placeholder="vacation Taken"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Gender</strong></td>
+<td width="150"><select name="gender" id="gender">
+												<option value="">gender</option>
+												<option value="male">Male</option>
+												  <option value="female">Female</option>
+												  </select></td>
+<td width="150"><strong>Onduty Taken</strong></td>
+<td width="150"><input type="text" name="onduty" id="onduty" placeholder="onduty Taken"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Date Of Birth</strong></td>
+<td width="150"><input type="date" name="dob" id="dob" style="width:175px" ></td>
+<td width="150"><strong>Pemission Taken</strong></td>
+<td width="150"><input type="text" name="permission" id="permission" placeholder="permission Taken"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Leave Layer</strong></td>
+<td width="150"><input type="text" name="leavelayer" id="leavelayer" placeholder="leavelayer" ></td>
+<td width="150"><strong>LLP Taken</strong></td>
+<td width="150"><input type="text" name="llb" id="llb" placeholder="LLP"></td>
+
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td width="100"><strong>Permission Layer</strong></td>
+<td width="150"><input type="text" name="Permissionlayer" id="permissionlayer" required></td>
+<td width="150"><strong>Compensation</strong></td>
+<td width="150"><input type="text" name="Compensation"  id="compensation" required ></td>
+
+</tr>
+
+</table>
+</center><br><br>
+<center><button class="w3-button w3-blue w3-round-large" type="submit">Apply</button></center>
+</form>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

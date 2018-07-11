@@ -1,0 +1,175 @@
+﻿<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$.get("/profilenew",function(data){
+console.log(data);
+$("#name").html(": "+data[0].name);
+$("#staffidid").html(": "+data[0].staffidid);
+$("#dept").html(": "+data[0].dept);
+$("#dob").html(": "+data[0].dob);
+$("#phonenumber").html(": "+data[0].mobilenumber);
+$("#gender").html(": "+data[0].gender);
+$("#email").html(": "+data[0].username);
+$("#desi").html(": "+data[0].desi);
+
+});
+});
+</script>
+
+
+
+</head>
+<body>
+ 	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/alteracceptance">Alter Acceptance</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+
+<div>
+<center><h2>Profile</h2></center></div>
+<h5>
+
+<center>
+<div class="container">
+
+  <table class="table table-bordered table-striped"  id="mytable">
+<tbody>
+<tr>
+<td ><center><strong>Name</strong></center></td>
+	<td ><div id="name"></div></td>
+</tr>
+<tr>
+	<td><center><strong>Staff Id</center></strong></td>
+	<td><div id="staffidid"></div></td>
+	
+</tr>
+<tr >
+	<td><center><strong>Department</center></strong></td>
+	<td><div id="dept"></div></td>
+</tr>
+<tr>
+	<td><center><strong>Date Of Birth</center></strong></td>
+	<td><div id="dob"></div></td>
+</tr>
+<tr>
+	<td><center><strong>Phone Number</center></strong></td>
+	<td><div id="phonenumber"></div></td>
+</tr>
+<tr >
+	<td><center><strong>Gender</center></strong></td>
+	<td><div id="gender"></td>
+</tr>
+<tr>
+	<td><center><strong>Email</center></strong></td>
+	<td><div id="email"></div></td>
+</tr>
+<tr>
+	<td><center><strong>Status</center></strong></td>
+	<td><div id="desi"></div></td>
+</tr>
+
+</h5>
+
+</tbody>
+</table>
+
+</center>
+<center>
+<button onclick="document.getElementById('id01').style.display='block'" class='w3-button w3-green w3-round-large' style="width:auto;">Edit</button></center>
+</center>
+<center>
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+
+  <form class="modal-content animate" action="/profileupdate" method="post">
+    <center><h2>Update</h2></center>
+<table>
+<tr>
+<td width="200">Name</td>
+	<td>:<input type="text" name="name"></td>
+</tr>
+<tr>
+	<td>Password</td>
+	<td>:<input type="text" name="password"></td>
+</tr>
+<tr>
+	<td>Date Of Birth</td>
+	<td>:<input type="text" name="dob"></td>
+</tr>
+<tr>
+	<td>Phone Number</td>
+	<td>:<input type="text" name="mobilenumber"></td>
+</tr>
+<tr>
+	<td>Email</td>
+	<td>:<input type="text" name="email"></td>
+</tr>
+
+
+</table><br><br>
+     <center>
+	 <button type="button" class='w3-button w3-red w3-round-large' onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+     <button type="submit" class='w3-button w3-blue w3-round-large'>Update</button>
+	</center>
+ 
+  </form>
+</div>
+<script>
+
+var modal = document.getElementById('myModal');
+
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+</script>
+
+
+</body>
+</html>

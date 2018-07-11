@@ -1,0 +1,353 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<script>
+		var v=	$.getJSON('/notificationnew',function(data){
+		
+				var table = document.getElementById("mytable");
+				for(var i=0;i<data.length;i++)
+				{
+				
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					var cell12 = row.insertCell(11);
+					
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].dept;
+					cell4.innerHTML = data[i].fromdate;
+					cell5.innerHTML = data[i].todate;
+					cell6.innerHTML = data[i].type;
+					cell7.innerHTML = data[i].numberofdays;
+					cell8.innerHTML = data[i].purpose;
+					cell9.innerHTML = "<button class=\"w3-button w3-green w3-round-large\" onclick=\"location.href=\'/accept/"+data[i].uuid+"\';\">Approve</button>";
+					if(data[i].type=="Casual"){
+					cell10.innerHTML = "<button class=\"w3-button w3-green w3-round-large\" onclick=\"location.href=\'/approvellb/"+data[i].uuid+"\';\">Approve LLP</button>";
+					}else{
+					cell10.innerHTML ="-";
+					}
+					cell11.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/cancel/"+data[i].uuid+"\';\">Cancel</button>";
+					cell12.innerHTML = "<button class=\"w3-button w3-blue w3-round-large\" onclick=\"location.href=\'/alterinfo/"+data[i].uuid+"\';\">Alter Details</button>";
+					
+					
+					// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+                    //cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+					//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+				}
+			});
+</script>
+<script>
+		var v=	$.getJSON('/notificationpermission',function(data){
+				var table = document.getElementById("permission");
+				for(var i=0;i<data.length;i++)
+				{
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].dept;
+					cell4.innerHTML = data[i].date;
+					cell5.innerHTML = data[i].time;
+					cell6.innerHTML = "<button class=\"w3-button w3-green w3-round-large\" onclick=\"location.href=\'/acceptper/"+data[i].uuid+"\';\">Approve</button>";
+					cell7.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/cancelper/"+data[i].uuid+"\';\">Cancel</button>";
+					// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+                    //cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+					//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+				}
+			});
+</script>
+
+<script>
+		var v=	$.getJSON('/notificationleave',function(data){
+		
+				var table = document.getElementById("leave");
+				for(var i=0;i<data.length;i++)
+				{
+				
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					var cell12 = row.insertCell(11);
+					var cell13 = row.insertCell(12);
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].dept;
+					cell4.innerHTML = data[i].fromdate;
+					cell5.innerHTML = data[i].todate;
+					cell6.innerHTML = data[i].type;
+					cell7.innerHTML = data[i].numberofdays;
+					cell8.innerHTML = data[i].purpose;
+					cell9.innerHTML = data[i].hod;
+					cell10.innerHTML = data[i].principal;
+					cell11.innerHTML =data[i].ao;
+					cell12.innerHTML = data[i].co;
+					cell13.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/cancel/"+data[i].uuid+"\';\">Cancel</button>";
+					
+					
+					// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+                    //cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+					//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+				}
+			});
+</script>
+
+<script>
+		var v=	$.getJSON('/notificationcompensation',function(data){
+		//console.log(data);
+				var table = document.getElementById("compensation");
+				for(var i=0;i<data.length;i++)
+				{
+				
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].dept;
+					cell4.innerHTML = data[i].desi;
+					cell5.innerHTML = data[i].date;
+					cell6.innerHTML = data[i].hod;
+					cell7.innerHTML = data[i].principal;
+					cell8.innerHTML = data[i].ao;
+					cell9.innerHTML = data[i].co;
+					cell10.innerHTML = "<button class=\"w3-button w3-green w3-round-large\" onclick=\"location.href=\'/acceptcompensation/"+data[i].uuid+"\';\">Approve</button>";
+					cell11.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/cancelcompensation/"+data[i].uuid+"\';\">Cancel</button>";
+					
+					// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+                    //cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+					//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+				}
+			});
+</script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/alteracceptance">Alter Acceptance</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav><div>
+<center><h2>Notification</h2></center></div>
+
+<h3>Leaves</h3>	  </div><div8><h7>
+
+
+<center>
+	  <div class="container">
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+
+  <table class="table table-bordered table-striped"  id="mytable">
+<thead>
+  <tr>
+<td width="100"><strong>S.No</strong></td>
+<td width="150"><strong>Name</strong></td>
+<td width="150"><strong>Department</strong></td>
+<td width="250"><strong>From</strong></td>
+<td width="280"><strong>To</strong></td>
+<td width="200"><strong>Type of leave</strong></td>
+<td width="200"><strong>No. of days</strong></td>
+<td width="200"><strong>Purpose</strong></td>
+<td width="150"><strong>Approve</strong></td>
+<td width="150"><strong>Approve LLP </strong></td>
+
+<td width="120"><strong>Cancel</strong></td>
+<td width="150"><strong>Details</strong></td>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</center>
+<br><br>
+<h3>Permissions</h3>
+<center>
+<center>
+	  <div class="container">
+  <input class="form-control" id="myInput2" type="text" placeholder="Search..">
+  <br>
+
+  <table class="table table-bordered table-striped"  id="permission">
+<thead>
+  <tr>
+<td width="100"><strong>S.No</strong></td>
+<td width="150"><strong>Name</strong></td>
+<td width="150"><strong>Department</strong></td>
+<td width="200"><strong>Date</strong></td>
+<td width="150"><strong>Time</strong></td>
+<td width="150"><strong>Approve</strong></td>
+<td width="150"><strong>Cancel</strong></td>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<br><br></center></center>
+<h3>Approved Leaves</h3>
+<center>
+<center>
+	  <div class="container">
+  <input class="form-control" id="myInput3" type="text" placeholder="Search..">
+  <br>
+
+  <table class="table table-bordered table-striped"  id="leave">
+<thead>
+  <tr>
+<td width="100"><strong>S.No</strong></td>
+<td width="150"><strong>Name</strong></td>
+<td width="150"><strong>Department</strong></td>
+<td width="250"><strong>From</strong></td>
+<td width="280"><strong>To</strong></td>
+<td width="200"><strong>Type of leave</strong></td>
+<td width="200"><strong>No. of days</strong></td>
+<td width="200"><strong>Purpose</strong></td>
+<td width="200"><strong>HOD</strong></td>
+<td width="200"><strong>Principal</strong></td>
+<td width="200"><strong>Ao</strong></td>
+<td width="200"><strong>Co</strong></td>
+<td width="120"><strong>Cancel</strong></td>
+
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+<br><br></center></center>
+<h3>Compensation Credit Notification</h3>
+<center>
+<center>
+	  <div class="container">
+  <input class="form-control" id="myInput3" type="text" placeholder="Search..">
+  <br>
+
+  <table class="table table-bordered table-striped"  id="compensation">
+<thead>
+  <tr>
+<td width="100"><strong>S.No</strong></td>
+<td width="150"><strong>Name</strong></td>
+<td width="150"><strong>Department</strong></td>
+<td width="250"><strong>Designation</strong></td>
+<td width="280"><strong>Date</strong></td>
+<td width="200"><strong>HOD</strong></td>
+<td width="200"><strong>Principal</strong></td>
+<td width="200"><strong>Ao</strong></td>
+<td width="200"><strong>Co</strong></td>
+<td width="120"><strong>Approve</strong></td>
+<td width="120"><strong>Cancel</strong></td>
+
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+</center>
+
+</div8>
+</h1>
+</h1>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#mytable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#myInput2").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#permission tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#myInput3").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#leave tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>

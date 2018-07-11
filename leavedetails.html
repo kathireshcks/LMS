@@ -1,0 +1,133 @@
+
+
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<script>
+				var v=	$.getJSON('/userdetails',function(data){
+		
+				var table = document.getElementById("mytable");
+				for(var i=0;i<data.length;i++)
+				{
+				console.log(data[i]);
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					var cell12 = row.insertCell(11);
+					var cell13 = row.insertCell(12);
+					var cell14 = row.insertCell(13);
+					var cell15 = row.insertCell(14);
+					
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].dept;
+					cell4.innerHTML = data[i].casualavail;
+					cell5.innerHTML = data[i].vacationavail;
+					cell6.innerHTML = data[i].ondutyavail;
+					cell7.innerHTML = data[i].permissionavail;
+					cell8.innerHTML = data[i].casual;
+					cell9.innerHTML = data[i].vacation;
+					cell10.innerHTML = data[i].onduty;
+					cell11.innerHTML = data[i].permission;
+					cell12.innerHTML = data[i].llb;
+					cell13.innerHTML = data[i].Compensation;
+					cell14.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/deleteleave/"+data[i].id+"\';\">Delete</button>";
+					cell15.innerHTML = "<button class=\"w3-button w3-green w3-round-large\" onclick=\"location.href=\'/userupdate/"+data[i].id+"\';\">Edit</button>";
+					
+				}
+			});
+
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"> Home</a></li>
+      
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/reportdateget"><span class="glyphicon glyphicon-list-alt"> Report</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+<div>
+<center><h2>User Leave Details</h2></center></div>
+
+<h3></h3>	  </div><div8><h7>
+
+
+<center>
+	  <div class="container">
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+
+  <table class="table table-bordered table-striped"  id="mytable">
+<thead>
+  <tr>
+<td width="100"><strong>S.No</strong></td>
+<td width="100"><strong>Name</strong></td>
+<td width="100"><strong>Department</strong></td>
+<td width="100"><strong>Casual Available</strong></td>
+<td width="100"><strong>Vacation Available</strong></td>
+<td width="100"><strong>Onduty Available</strong></td>
+<td width="100"><strong>Permission Available</strong></td>
+<td width="100"><strong>Taken Casual</strong></td>
+<td width="100"><strong>Taken Vacation</strong></td>
+<td width="100"><strong>Taken Onduty</strong></td>
+<td width="100"><strong>Taken Permission</strong></td>
+<td width="100"><strong>LLP Taken</strong></td>
+<td width="100"><strong>Compensation</strong></td>
+<td width="100"><strong>Delete</strong></td>
+<td width="100"><strong>Edit</strong></td>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+</center>
+
+</center>
+
+</div8>
+</h1>
+</h1>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#mytable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+</body>
+</html>

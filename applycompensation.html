@@ -1,0 +1,120 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+
+</head>
+<body>
+
+
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/alteracceptance">Alter Acceptance</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+<div>
+<center><h2>Compensation Credit Application</h2></center></div>
+
+	  </div><br><br><br><br>
+	  <center>
+	  <p>
+  <label>Number Of Days</label>
+  <input id="inputPounds" type="number" placeholder="Days" oninput="weightConverter(this.value)" onchange="weightConverter(this.value)">
+</p>
+
+
+
+	  
+<h7> 
+
+<br><br>
+	<form action="/applycompensation" method="post">
+<center>  
+<table   id="mytable" width="300" height="200" >
+<tr><td><center><div id="no"></div></center></td><td><center><div id="date"></div></center></td>
+</tr>
+</table></h7>
+</center><br><br>
+<center><div id="submit"></div></center>
+</form></center>
+<script>
+function weightConverter(valNum) {
+  //document.getElementById("").innerHTML=valNum/2.2046;
+  console.log(valNum);
+  var rowCount = mytable.rows.length;
+        for (var i = rowCount - 1; i > 0; i--) {
+            mytable.deleteRow(i);
+			$("#submit").html(" ");
+			$("#no").html("  ");
+			$("#date").html(" ");
+
+        }
+  //$("#mytable").empty();
+  
+  /*var table = document.getElementById("mytable");
+				for(var i=0;i<valNum;i++)
+				{
+				console.log("enter");
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					cell.innerHTML = i+1;
+					cell2.innerHTML = "<input type='date' name='" + "date".concat(i+1) + "' >";
+					$("#submit").html("<button type=\"submit\" class=\"w3-button w3-blue w3-round-large\" >Apply</button>");
+					}*/
+	if(valNum>0){
+				var table = document.getElementById("mytable");
+							$("#no").html("No  ");
+							$("#date").html("Date ");
+
+							for(var i=0;i<valNum;i++)
+							{
+				
+								var row = table.insertRow(i+1);
+								var cell = row.insertCell(0);
+								var cell2 = row.insertCell(1);
+								cell.innerHTML = i+1;
+								cell2.innerHTML = "<center><input type='date' name='" + "date".concat(i+1) + "' required ></center>";
+								$("#submit").html("<button type=\"submit\" class=\"w3-button w3-blue w3-round-large\" >Apply</button>");
+							}
+					
+			}
+				
+}
+</script>
+
+
+
+</body>
+</html>

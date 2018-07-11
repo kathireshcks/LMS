@@ -1,0 +1,145 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+<link rel="stylesheet" href="v5.css">
+<script src="./jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$.get("/ld",function(data){
+console.log(data);
+$("#cas").html(": "+data[0].casual);
+$("#vac").html(": "+data[0].vacation);
+$("#ond").html(": "+data[0].onduty);
+$("#per").html(": "+data[0].permission);
+$("#casa").html(": "+data[0].casualavail);
+$("#vaca").html(": "+data[0].vacationavail);
+$("#onda").html(": "+data[0].ondutyavail);
+$("#pera").html(": "+data[0].permissionavail);
+
+});
+});
+</script>
+
+</head>
+<body>
+
+<div class="navbar">
+	  <a href="/">Home</a>
+	  <div class="dropdown">
+	    <button class="dropbtn">Menu 
+	      <i class="fa fa-caret-down"></i>
+	    </button>
+	    <div class="dropdown-content">
+	      <a href="/leavedetails">Leave Details</a>
+	      <a href="/appliedlve">Applied Leave</a>
+	      <a href="/appliedper">Applied Permission</a>
+	      <a href="/applyleave">Apply Leave</a>
+	      <a href="/applyper">Apply Permission</a>
+	      <a href="/alteracceptance">Alter Acceptance</a>
+	      <a href="/profile">Profile</a> </div>
+	  </div> 
+	  <a href="/profile">Profile</a>
+	  <a href="/logout">Logout</a>
+	  <div class="rgt">
+	  	<a href="/">Leave Management</a>
+	  </div>
+	</div><div>
+<div>
+<center><h2>Leave Details</h2></center></div>
+
+	  </div>
+	  <h7><table height="300" width="930" >
+<tr>
+	
+	<td colspan="3">Previous Leave Taken during 2017-2018 (days)</td>
+</tr>
+<tr>
+<td width="100"></td>
+<td width="200">Casual Leave</td>
+<td><div id="cas"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>Vacation</td>
+<td><div id="vac"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>On Duty</td>
+<td><div id="ond"></div></td>
+</tr>
+<tr>
+<td colspan="3">Leave Eligible as on todays date (days):</td>
+</tr>
+<td></td>
+<td>Casual Leave</td>
+<td><div id="casa"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>Vacation</td>
+<td><div id="vaca"></div></td>
+</tr>
+<td></td>
+<td>On Duty</td>
+<td><div id="onda"></div></td>
+</tr>
+</table>
+</h7>
+<br> <br>
+
+
+<h7><B>Apply Leave: </B> </h7>
+<form action="/applyleavenew" method="post">
+
+<center>
+<table id="Table" height="400" width="800" >
+
+<tr>
+	<td> <B> Type of Leave*</td>
+	<td>:<select name="type">
+	<option width="200" value="select">Select</option>
+	<option value="Casual">Casual</option>
+	<option value="Vacation">Vacation</option>
+	<option value="LLP">LLP</option>
+	<option value="Compensation">Compensation</option>
+	<option value="Medical">Medical</option>
+	<option value="Onduty">Onduty</option>
+	</select></td>
+	<td> </td>
+</tr>
+<tr>
+	<td> <B> From</td> 
+	<td colspan="2"><input type="date" name="fromdate" size="20" id="name" >
+	<select name="fromtime">
+	<option value="select">select</option>
+	<option value="mor">FN(9-10.00)</option>
+	<option value="afn">AN(3.30-4.30)</option></td>
+
+	<td> <B> To</td>
+	<td colspan="2"><input type="date" name="todate" size="20" id="name" >
+	<select name="totime">
+	<option value="select">select</option>
+	<option value="mor">FN(9-10.00)</option>
+	<option value="afn">AN(3.30-4.30)</option></td>
+	</td>
+</tr>
+<tr>
+	<td> <B> Purpose</td>
+	<td colspan="3"><input type="text" name="purpose" size="60" id="purpose" ></td>
+	<td > <B> No of days</td>
+	<td><input type="text" name="numberdays" id="purpose" size="27"></td>
+</tr>
+
+
+</table>
+
+<button class="w3-button w3-blue w3-round-large" type="submit">Apply</button>
+</center>
+<script>
+
+
+
+</body>
+</html>

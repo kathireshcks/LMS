@@ -1,0 +1,138 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+<link rel="stylesheet" href="v5.css">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./jquery.min.js"></script>
+<script>
+		var v=	$.getJSON('/getclass',function(data){
+				var table = document.getElementById("mytable");
+			
+				for(var i=0;i<data.length;i++)
+				{
+				//console.log(data[i].permissionlayer);
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].cc;
+					cell3.innerHTML = data[i].sub1;
+					cell4.innerHTML = data[i].sub2;
+					cell5.innerHTML = data[i].sub3;
+					cell6.innerHTML = data[i].sub4;
+					cell7.innerHTML = data[i].sub5;
+					cell8.innerHTML = data[i].sub6;
+					cell9.innerHTML = data[i].sub7;
+					cell10.innerHTML = data[i].sub8;
+					cell11.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/deleteclass/"+data[i].cc+"\';\">Delete</button>";
+				}
+			});
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"> Home</a></li>
+      
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/reportdateget"><span class="glyphicon glyphicon-list-alt"> Report</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+	  
+<center>
+<div class="container">
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+
+  <table class="table table-bordered table-striped"  id="mytable">
+<thead>
+  <tr>
+<td width="100"><strong>No</strong></td>
+<td width="100"><strong>Class</strong></td>
+<td width="100"><strong>Sub1</strong></td>
+<td width="100"><strong>Sub2</strong></td>
+<td width="100"><strong>Sub3</strong></td>
+<td width="100"><strong>Sub4</strong></td>
+<td width="100"><strong>Sub5</strong></td>
+<td width="100"><strong>Sub6</strong></td>
+<td width="100"><strong>Sub7</strong></td>
+<td width="100"><strong>Sub8</strong></td>
+<td width="100"><strong>Delete</strong></td>
+
+</tr>
+</thead>
+<tbody >
+</tbody>
+</table><br><br><br>
+<form action="/addclass" method="post">
+<table class="table table-bordered table-striped" >
+<tr>
+	<td ><strong>Class</strong></td>
+	<td ><strong>Sub1</strong></td>
+<td ><strong>Sub2</strong></td>
+<td ><strong>Sub3</strong></td>
+<td ><strong>Sub4</strong></td>
+<td ><strong>Sub5</strong></td>
+<td ><strong>Sub6</strong></td>
+<td ><strong>Sub7</strong></td>
+<td ><strong>Sub8</strong></td>
+
+</tr>
+<tr>
+	
+	<td><input type="text" name="clas" size="10"></td>
+	<td><input type="text" name="sub1" size="10"></td>
+	<td><input type="text" name="sub2" size="10"></td>
+	<td><input type="text" name="sub3" size="10"></td>
+	<td><input type="text" name="sub4" size="10"></td>
+	<td><input type="text" name="sub5" size="10"></td>
+	<td><input type="text" name="sub6" size="10"></td>
+	<td><input type="text" name="sub7" size="10"></td>
+	<td><input type="text" name="sub8" size="10"></td>
+</tr>
+
+</table>
+<button class="w3-button w3-blue w3-round-large" type="submit">Add</button>
+</form>
+</center>
+</h1></center>
+</h1>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>

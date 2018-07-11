@@ -1,0 +1,272 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<style>
+#dynamicDropdown{
+ width:175px;  
+height:30px;
+}
+#select{
+ width:175px;  
+height:30px;
+}
+
+</style>
+<script>
+
+$(function () {
+    $("#user_profile_form").submit(function(event) {
+      event.preventDefault();
+      var postData = {
+        id: $('#dynamicDropdown').val(),
+		select:$('#select').val(),
+		LLP:$('#LLP').val()
+        
+      };
+	  $.post("/reportidpost", postData,
+        function(data) {
+		//console.log(data);
+		var rowCount = mytable.rows.length;
+        for (var i = rowCount - 1; i >= 0; i--) {
+            mytable.deleteRow(i);
+			
+        }
+  $("#search").html(" ");
+  $("#export").html(" ");
+		if(data.length>0){
+		$("#search").html("<input class=\"form-control\" id=\"myInput\" type=\"text\" placeholder=\"Search..\">");
+				if(postData.select=="leave"){
+				
+					var table = document.getElementById("mytable");
+					console.log(data[0]);
+						for(var i=-1;i<data.length;i++)
+						{
+							var row = table.insertRow(i+1);
+							var cell = row.insertCell(0);
+							var cell2 = row.insertCell(1);
+							var cell3 = row.insertCell(2);
+							var cell4 = row.insertCell(3);
+							var cell5 = row.insertCell(4);
+							var cell6 = row.insertCell(5);
+							var cell7 = row.insertCell(6);
+							var cell8 = row.insertCell(7);
+							var cell9 = row.insertCell(8);
+							var cell10 = row.insertCell(9);
+							var cell11 = row.insertCell(10);
+							var cell12 = row.insertCell(11);
+							if(i==-1){
+							
+							cell.innerHTML = "<strong>No</strong>";
+							cell2.innerHTML = "<strong>Name</strong>";
+							cell3.innerHTML = "<strong>department</strong>";
+							cell4.innerHTML = "<strong>from</strong>";
+							cell5.innerHTML = "<strong>To</strong>";
+							cell6.innerHTML = "<strong>Type</strong>";
+							cell7.innerHTML = "<strong>Number of Days</strong>";
+							cell8.innerHTML = "<strong>purpose</strong>";
+							cell9.innerHTML = "<strong>Hod</strong>";
+							cell10.innerHTML = "<strong>Principal</strong>";
+							cell11.innerHTML = "<strong>Ao</strong>";
+							cell12.innerHTML = "<strong>Co</strong>";
+							
+								
+							}else{
+							
+							/*<td width="100"><strong>No</strong></td>
+								<td width="150"><strong>Name</strong></td>
+								<td width="150"><strong>department</strong></td>
+								<td width="150"><strong>From</strong></td>
+								<td width="150"><strong>To</strong></td>
+								<td width="200"><strong>Type of leave</strong></td>
+								<td width="200"><strong>No of days</strong></td>
+								<td width="200"><strong>purpose</strong></td>
+								<td width="150"><strong>Hod</strong></td>
+								<td width="200"><strong>Principal</strong></td>
+								<td width="200"><strong>Ao</strong></td>
+								<td width="200"><strong>Co</strong></td>*/
+
+							cell.innerHTML = i+1;
+							cell2.innerHTML = data[i].name;
+							cell3.innerHTML = data[i].dept;
+							cell4.innerHTML = data[i].fromdate;
+							cell5.innerHTML = data[i].todate;
+							cell6.innerHTML = data[i].type;
+							cell7.innerHTML = data[i].numberofdays;
+							cell8.innerHTML = data[i].purpose;
+							cell9.innerHTML = data[i].hod;
+							cell10.innerHTML = data[i].principal;
+							cell11.innerHTML = data[i].ao;
+							cell12.innerHTML = data[i].co;
+							}
+							// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+							//cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+							//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+						}
+						console.log(data[0]._id);
+						
+				$("#export").html("<button id=\"btn\" class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/reportidleave/"+data[0]._id+"\';\">Export</button>");
+				}
+				else if(postData.select=="permission"){
+				console.log(data[0]);
+					var table = document.getElementById("mytable");
+						for(var i=-1;i<data.length;i++)
+						{
+							var row = table.insertRow(i+1);
+							var cell = row.insertCell(0);
+							var cell2 = row.insertCell(1);
+							var cell3 = row.insertCell(2);
+							var cell4 = row.insertCell(3);
+							var cell5 = row.insertCell(4);
+							var cell6 = row.insertCell(5);
+							var cell7 = row.insertCell(6);
+							var cell8 = row.insertCell(7);
+							var cell9 = row.insertCell(8);
+							var cell10 = row.insertCell(9);
+							if(i==-1){
+							
+							cell.innerHTML = "<strong>No</strong>";
+							cell2.innerHTML = "<strong>Name</strong>";
+							cell3.innerHTML = "<strong>department</strong>";
+							cell4.innerHTML = "<strong>Desigination</strong>";
+							cell5.innerHTML = "<strong>Date</strong>";
+							cell6.innerHTML = "<strong>Time</strong>";
+							cell7.innerHTML = "<strong>Hod</strong>";
+							cell8.innerHTML = "<strong>Principal</strong>";
+							cell9.innerHTML = "<strong>Ao</strong>";
+							cell10.innerHTML = "<strong>Co</strong>";
+							
+								
+							}else{
+							
+							cell.innerHTML = i+1;
+							cell2.innerHTML = data[i].name;
+							cell3.innerHTML = data[i].dept;
+							cell4.innerHTML = data[i].desi;
+							cell5.innerHTML = data[i].date;
+							cell6.innerHTML = data[i].time;
+							cell7.innerHTML = data[i].hod;
+							cell8.innerHTML = data[i].principal;
+							cell9.innerHTML = data[i].ao;
+							cell10.innerHTML = data[i].co;
+							}
+							// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+							//cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+							//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+						}
+						console.log(data._id);
+				$("#export").html("<button id=\"btn\" class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/reportidpermission/"+data[0]._id+"\';\">Export</button>");
+
+				
+				}
+
+		}
+		else{
+			$("#nodata").html("No data find");
+		
+		}
+          //var json = jQuery.parseJSON(data);
+          /*if (json.ExceptionMessage != undefined) {
+            alert(json.ExceptionMessage); // the exception from the server
+            $('#' + json.Field).focus(); // focus the specific field to fill in
+          }(*/
+            //alert(json); // the success message from server
+          
+       });
+	   
+    });
+		
+});
+
+</script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+$.get("/allusers",function(data){
+
+ 
+ 
+ 
+          console.log(data.length);
+var select = $("#dynamicDropdown");
+          select.children().remove();              
+select.append($('<option >', {value: "", text: "select"}));
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].id, text: data[i].name+"("+data[i].dept+")"}));
+}
+ 
+});
+ 
+ 
+});
+</script>
+
+
+</head>
+<body>
+
+
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+<div>
+<center><h2>Report by id</h2></center></div>
+
+	  </div>
+ 
+	
+<br><br>
+	<form id="user_profile_form">
+<center>
+<select id="dynamicDropdown" required></select><br><br><select id="select" required><option value=" ">Select</option><option value="leave">Leave</option><option value="permission">Permission</option></select><br><br>
+<select id="LLP"><option value="All">ALL</option><option value="LLP">LLP</option></select>
+
+</center><br><br>
+<center><button class="w3-button w3-blue w3-round-large" type="submit" id="submit">Find</button></center>
+</form>
+
+<center>
+<div id="nodata"></div>
+	  <div class="container">
+  <div id="search"></div>
+  <br>
+
+  <table class="table table-bordered table-striped"  id="mytable">
+</table>
+<div id="export"></div>
+</center>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#mytable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>

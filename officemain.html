@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leave Management</title>
+	<script>sdocument.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<link rel="stylesheet" type="text/css" href="style1.css">
+	<link rel="stylesheet" type="text/css" href="button.css">
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+</head>
+<body>
+	<!--<ul>
+		<li><a href="/">Home</a></li>
+		<li><a><div class="dropdown">
+    <button class="dropbtn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div></a></li>
+		<li><a href="#register">Logout</a><li>
+		<li class="rgt"><a href="/">Leave Management</a></li>
+	</ul>-->
+		<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+	<div class="but">
+		<button type="button" class="button button-glow button-border button-rounded button-primary" onclick="window.location.href='/leavedetails'">Leave Details</button>
+		<button type="button" class=" button button-glow button-border button-rounded button-primary" onclick="window.location.href='/appliedlve'">Applied Leave</button>
+		<button type="button" class=" button button-glow button-border button-rounded button-primary" onclick="window.location.href='/appliedper'">Applied Permission</button>
+	</div>
+	<div class="but2">
+		<button type="button" class="button button-glow button-border button-rounded button-primary" onclick="window.location.href='/applyleave'">Apply Leave</button>
+		<button type="button" class=" button button-glow button-border button-rounded button-primary" onclick="window.location.href='/applyper'">Apply Permission</button>
+		
+	</div>
+</body>
+</html>

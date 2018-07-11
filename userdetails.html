@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+<link rel="stylesheet" href="v5.css">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./jquery.min.js"></script>
+<script>
+		var v=	$.getJSON('/userdetails',function(data){
+				var table = document.getElementById("mytable");
+			
+				for(var i=0;i<data.length;i++)
+				{
+				console.log(data[i].permissionlayer);
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					var cell12 = row.insertCell(11);
+					var cell13 = row.insertCell(12);
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].username;
+					cell4.innerHTML = data[i].staffidid;
+					cell5.innerHTML = data[i].mobilenumber;
+					cell6.innerHTML = data[i].desi;
+					cell7.innerHTML = data[i].dept;
+					cell8.innerHTML = data[i].gender;
+					cell9.innerHTML = data[i].dob;
+					cell10.innerHTML = data[i].leavelayer;
+					cell11.innerHTML = data[i].permissionlayer;
+					cell12.innerHTML = "<button class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/deleteuser/"+data[i].id+"\';\">Delete</button>";
+					cell13.innerHTML = "<button class=\"w3-button w3-green w3-round-large\" onclick=\"location.href=\'/userupdate/"+data[i].id+"\';\">Edit</button>";
+					// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+                    //cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+					//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+				}
+			});
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"> Home</a></li>
+      
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/reportdateget"><span class="glyphicon glyphicon-list-alt"> Report</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+<center><h2>User Details</h2></center></div>
+
+	  </div><object align="right"><button class="w3-button w3-blue w3-round-large" onclick="location.href='/exportusers'">Export Users</button></object>
+<center>
+	  <div class="container">
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+<center>
+  <table class="table table-bordered table-striped"  width="900" id="mytable">
+<thead>
+  <tr>
+<td width="100"><strong>S.No</strong></td>
+<td width="100"><strong>Name</strong></td>
+<td width="100"><strong>Username</strong></td>
+<td width="100"><strong>Staff id</strong></td>
+<td width="100"><strong>Mobile</strong></td>
+<td width="100"><strong>Designation</strong></td>
+<td width="100"><strong>Department</strong></td>
+<td width="100"><strong>Gender</strong></td>
+<td width="100"><strong>DOB</strong></td>
+<td width="100"><strong>Leave layer</strong></td>
+<td width="150"><strong>Permission Layer</strong></td>
+<td width="100"><strong>Delete</strong></td>
+<td width="100"><strong>Edit</strong></td>
+</tr>
+</thead>
+<tbody >
+</tbody>
+</table></center>
+</h1></center>
+</h1>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>

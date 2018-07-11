@@ -1,0 +1,38 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+ 
+alert("Hello World!!!");
+ 
+var data = {     'Country': 'India',     'Country1': 'USA', 'Country2': 'Australia',     'Country3': 'Srilanka'}  ;
+ 
+var s = $('<select />');
+ 
+for(var val in data)
+{
+ $('<option />', {value: val, text: data[val]}).appendTo(s);
+}
+ 
+s.appendTo('body');
+ 
+var data1 = {     'City': 'New Delhi',     'City2': 'WDC' ,'City3': 'Adilade','City4': 'Colombo'}  ;
+ 
+var s1 = $('<select />');
+ 
+for(var val in data1)
+{
+ $('<option />', {value: val, text: data1[val]}).appendTo(s1);
+}
+ 
+s1.appendTo('body');
+ 
+});
+</script>
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,67 @@
+
+
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<link rel="stylesheet" type="text/css" href="1st.css" />
+
+	<script type="text/javascript" src="engine1/jquery.js"></script>
+
+      <style>
+      
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+</head>
+<script>
+$(document).ready(function(){
+$.get("/flash",function(data){
+console.log(data);
+$("#message").html(data[0]);
+});
+});
+</script>
+
+
+<body>
+<center>
+<div7><div8>
+<div class="container-fluid"> <!-- this is to make it responsive to your screen width -->
+    <div class="row">
+        <div class="col-md-4 myClassName">  <!-- myClassName is defined in my CSS as you defined your container -->
+            <img src="\data1\tce logo.png" height="90px" width="150px">
+        </div8>
+
+<!-- <div7><img src="\data1\tce logo.png" alt="Tce Logo" style="width:60%;height:60%;"></div7><br> -->
+<font color="#ffcba4" size="18" style="bold" face="MV Boli">TAMILNADU COLLEGE OF ENGINEERING<br></font>
+<font color="#ffcba4" size="12" face="Bradley Hand ITC"> Staff Leave Management</font></center></div>
+    </div>
+</div></div7>
+  <div class="login">
+	<h1>Login</h1>
+    <form action="/" method="post">
+		<input type="email" name="usermail" placeholder="Username"  required />
+        <input type="password" name="userpassword" placeholder="Password"  required />
+        <button type="submit" class="btn btn-primary btn-block btn-large"  name="submit">submit</button><br><br>
+			
+</form>
+<a href="/forget" target="_blank">Forget Password</a>
+<br>
+<font color="red"><div id="message"></div></font>
+</div>
+   <script type="text/javascript" src="engine1/wowslider.js"></script>
+	<script type="text/javascript" src="engine1/script.js"></script>
+
+   
+
+</body>
+</html>

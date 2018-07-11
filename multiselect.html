@@ -1,0 +1,22 @@
+<html>
+<head>
+<script src="./jquery.min.js"></script>
+</head>
+<body>
+<select multiple="multiple" id="foo">
+    <option value="1">Cat<input type='checkbox' name='' value='Bike'></option>
+    <option value="2">Dog<input type='checkbox' name='' value='Bike'></option>
+    <option value="3">Fox<input type='checkbox' name='' value='Bike'></option>
+    <option value="4">Hen<input type='checkbox' name='' value='Bike'></option>
+    <option value="5">Albatross<input type='checkbox' name='' value='Bike'></option>
+</select>
+
+<a role="button" id="dog">Also select Dog</a>
+<script>
+$('#dog').on('click', function(){
+    var selected=$("#foo option:selected").map(function(){ return this.value }).get();
+    selected.push(2);// 2 is the val I set for Dog
+    $('#foo').val(selected);
+});</script>
+</body>
+</html>

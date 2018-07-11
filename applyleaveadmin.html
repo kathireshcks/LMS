@@ -1,0 +1,782 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<!-- <style>
+input:invalid {
+  box-shadow: 0 0 3px 1px red;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+</style>
+ -->
+ <style>
+ .multiselect {
+  width: 150px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+ </style>
+ 
+ 
+<!-- <script>
+
+$(document).ready(function(){
+$.get("/retrivecompensationnotuse",function(data){
+
+
+var table = document.getElementById("notusecompensation");
+				for(var i=0;i<data.length;i++)
+				{
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].date;
+					cell3.innerHTML = " <input type='checkbox' name='vehicle' value='Bike'>";
+					
+				}
+});
+});
+</script>
+ --><script type="text/javascript">
+
+$(document).ready(function(){
+$.get("/allusers",function(data){
+
+ 
+ 
+ 
+          var select = $("#dynamicDropdown1");
+          select.children().remove();   
+select.append($('<option >', {value:' ', text: "select"}));		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value:data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+
+ var select = $("#dynamicDropdown2");
+          select.children().remove();  
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value:data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+
+var select = $("#dynamicDropdown3");
+          select.children().remove(); 
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+var select = $("#dynamicDropdown4");
+          select.children().remove();   
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+var select = $("#dynamicDropdown5");
+          select.children().remove();   
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+var select = $("#dynamicDropdown6");
+          select.children().remove();  
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option>', {value: data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+var select = $("#dynamicDropdown7");
+          select.children().remove();     
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+var select = $("#dynamicDropdown8");
+          select.children().remove();    
+select.append($('<option >', {value:' ', text: "select"}));		            
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].staffidid, text: data[i].name+"("+data[i].dept+")"}));
+}
+});
+ 
+ 
+});
+</script>
+
+<script>
+$(document).ready(function(){
+$.get("/flash",function(data){
+if(data.length>0){
+console.log(data);
+alert(data);
+}
+});
+});
+</script>
+<script>
+$(document).ready(function(){
+$.get("/allc",function(data){
+//console.log(data);
+var select = $("#allclass1");
+          select.children().remove(); 
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass2");
+          select.children().remove();  
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass3");
+          select.children().remove(); 
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass4");
+          select.children().remove();    
+select.append($('<option >', {value:' ', text: "select"}));		            
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass5");
+          select.children().remove();     
+select.append($('<option >', {value:' ', text: "select"}));		  		  
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass6");
+          select.children().remove();    
+select.append($('<option >', {value:' ', text: "select"}));		            
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass7");
+          select.children().remove();    
+select.append($('<option >', {value:' ', text: "select"}));		            
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+var select = $("#allclass8");
+          select.children().remove();    
+select.append($('<option >', {value:' ', text: "select"}));		            
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].cc, text: data[i].cc}));
+}
+
+});
+});
+</script>
+<script>
+$(document).ready(function(){
+$.get("/ld",function(data){
+
+$("#cas").html(": "+data[0].casual);
+$("#vac").html(": "+data[0].vacation);
+$("#ond").html(": "+data[0].onduty);
+$("#per").html(": "+data[0].permission);
+$("#casa").html(": "+data[0].casualavail);
+$("#vaca").html(": "+data[0].vacationavail);
+$("#onda").html(": "+data[0].ondutyavail);
+$("#pera").html(": "+data[0].permissionavail);
+$("#llp").html(": "+data[0].llb);
+$("#compensation").html(": "+data[0].Compensation);
+var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+var d = new Date();
+var n = d.getFullYear();
+var pre=n-1;
+var m = d.getMonth();
+var string=d.toDateString();
+var sm=m+1;
+$("#month").html(m);
+$("#date").html(d);
+//$("#year1").html("Previous Leave Taken during "+pre+"-"+n+":");
+$("#year1").html("Previous Leave Availed during current year:");
+var da = d.getDate();
+$("#date2").html("Leave Eligible as on " +string);
+$("#date3").html("Permission Availed during  " +monthNames[m]+","+n);
+$("#date4").html(" Permission Eligible for " +monthNames[m]+","+n);
+$("#date5").html(" Loss of Pay Leave taken till  " +string);
+$("#date6").html(" Compensation Leave as on " +string);
+
+});
+});
+</script>
+<script>
+
+function myFunction1() {
+	var postData = {
+        clas: $('#allclass1').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub1");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction2() {
+	var postData = {
+        clas: $('#allclass2').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub2");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction3() {
+	var postData = {
+        clas: $('#allclass3').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub3");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction4() {
+	var postData = {
+        clas: $('#allclass4').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub4");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction5() {
+	var postData = {
+        clas: $('#allclass5').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub5");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction6() {
+	var postData = {
+        clas: $('#allclass6').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub6");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction7() {
+	var postData = {
+        clas: $('#allclass7').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub7");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+function myFunction8() {
+	var postData = {
+        clas: $('#allclass8').val()
+		
+      };
+	  $.post("/getsubject", postData,
+        function(data) {
+		var select = $("#ssub8");
+          select.children().remove();    
+			select.append($('<option >', {value:' ', text: "select"}));		            
+			 select.append($('<option >', {value: data[0].sub1, text: data[0].sub1}));
+			 select.append($('<option >', {value: data[0].sub2, text: data[0].sub2}));
+			 select.append($('<option >', {value: data[0].sub3, text: data[0].sub3}));
+			 select.append($('<option >', {value: data[0].sub4, text: data[0].sub4}));
+			 select.append($('<option >', {value: data[0].sub5, text: data[0].sub5}));
+			 select.append($('<option >', {value: data[0].sub6, text: data[0].sub6}));
+			 select.append($('<option >', {value: data[0].sub7, text: data[0].sub7}));
+			 select.append($('<option >', {value: data[0].sub8, text: data[0].sub8}));
+			
+		});
+}
+
+</script>
+<script>
+function typeofleave() {
+	var type=$('#type').val();
+	if(type=="Compensation"){
+	
+	//$("#numberofdays").html("<table id='notusecompensation'></table>");
+	$("#numberofdays").html("<select id='chkveg' multiple='multiple'></select>");
+	//$("#numberofdays").html("<div class='multiselect'><div class='selectBox' onclick='showCheckboxes()'><select><option>Select</option></select><div class='overSelect'></div></div><div id='checkboxes'><input type='checkbox' id='one' />First checkbox</label></div></div>");
+	
+	$.get("/retrivecompensationnotuse",function(data){
+	
+	for(var i=0;i<data.length;i++)
+	{
+				
+		var htm = '';
+		 htm += '<option>'+data[i].date+'</option>';
+			//$('.multiselect-container').append(htm);
+			  $('#chkveg').append(htm);
+	}
+	/*var select = $("#checkboxes");
+	var design="";
+		for(var i=0;i<data.length; i++){
+			  //select.children().remove();    
+				 //select.append($('<input>', {type:checkbox value: data[0].date}));
+				 design+="'"data[i].date"'<input type='checkbox' id='"data[i].date"'><br>";
+			
+		}
+		$("#numberofdays").html(design);*/
+	
+	/*console.log(data[0].name);
+		var table = document.getElementById("notusecompensation");
+				for(var i=0;i<data.length;i++)
+				{
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].date;
+					cell3.innerHTML = " <input type='checkbox' name='check' value='Bike'>";
+					
+				}*/
+	});
+
+	}else{
+	$("#numberofdays").html(" <input id='ex2' step='any' type='number' name='numberdays'  style='width: 7em' min='0.5'>");
+	}
+}
+</script>
+<script>
+var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
+</script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+$.get("/allusers",function(data){
+
+ 
+ 
+ 
+          console.log(data.length);
+var select = $("#dynamicDropdown");
+          select.children().remove();              
+select.append($('<option >', {value: "", text: "select"}));
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].id, text: data[i].name+"("+data[i].dept+")"}));
+}
+ 
+});
+ 
+ 
+});
+</script>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/alteracceptance">Alter Acceptance</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+<div>
+<center><h2>Apply Leave</h2></center></div>
+
+<br>
+<br>
+
+
+<h7><B>Apply Leave: </B> </h7>
+<form action="/applyleavenew" method="post">
+
+<center>
+
+<table id="Table" height="900" width="800" >
+<tr>
+<td><b>Employee Name</b></td>
+<td>
+<select id="dynamicDropdown" name="userid" required></select></td>
+</tr>
+<tr>
+	<td> <B> Type of Leave<font color="red">*</font></td>
+	<td>:<select name="type" id="type" onchange="typeofleave()" required>
+	<option width="200" value="">Select</option>
+	<option value="Casual">Casual</option>
+	<option value="Vacation">Vacation</option>
+	<option value="Compensation">Compensation</option>
+	<option value="Medical">Medical</option>
+	<option value="Onduty">Onduty</option>
+	</select></td>
+</tr>
+<tr>
+	<td> <B> From<font color="red">*</font></td> 
+	<td colspan="2"><input type="date" name="fromdate"  size="20" id="name" required>
+	<select name="fromtime" required>
+	<option value="">select</option>
+	<option value="mor">FN</option>
+	<option value="afn">AN</option></td>
+
+	<td> <B> To<font color="red">*</font></td>
+	<td colspan="2"><input type="date" name="todate" size="20" id="name" required >
+	<select name="totime" required>
+	<option value="">select</option>
+	<option value="mor">FN</option>
+	<option value="afn">AN</option></td>
+	</td>
+</tr>
+<tr>
+	<td> <B> Purpose<font color="red">*</font></td>
+	<td colspan="3"><input type="text" name="purpose" size="50" id="purpose" minlength="4" required></td>
+	<td> <B>No of days<font color="red">*</font></td>
+	<td><div id="numberofdays"></div></td>
+</tr>
+
+
+<tr>
+	<td colspan="6"><B> Alter Classwork: </B></td>
+</tr>
+<tr> <td>  </td></tr>
+
+<tr>
+	
+	<td><B> Date</td>
+	<td><B><center> Period</center></td>
+	<td><B> Class</td>
+	<td> <B> Subjects</td>
+	<td><B> Alter Staffid</td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate1"></td>
+	<td ><center><input type="number" name="speroid1" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass1" name="sclass1" onchange="myFunction1()"></select></td>
+	<td><select id="ssub1" name="ssub1" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown1" name="sstaff1"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate2"></td>
+	<td ><center><input type="number" name="speroid2" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass2" name="sclass2" onchange="myFunction2()"></select></td>
+	<td><select id="ssub2" name="ssub2" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown2" name="sstaff2"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate3"></td>
+	<td ><center><input type="number" name="speroid3" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass3" name="sclass3" onchange="myFunction3()"></select></td>
+	<td><select id="ssub3" name="ssub3" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown3" name="sstaff3"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate4"></td>
+	<td ><center><input type="number" name="speroid4" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass4" name="sclass4" onchange="myFunction4()"></select></td>
+	<td><select id="ssub4" name="ssub4" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown4" name="sstaff4"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate5"></td>
+	<td ><center><input type="number" name="speroid5" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass5" name="sclass5" onchange="myFunction5()"></select></td>
+	<td><select id="ssub5" name="ssub5" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown5" name="sstaff5"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate6"></td>
+	<td ><center><input type="number" name="speroid6" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass6" name="sclass6" onchange="myFunction6()"></select></td>
+	<td><select id="ssub6" name="ssub6" style="width:100px;" ></select></td>
+	<td><select id="dynamicDropdown6" name="sstaff6"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate7"></td>
+	<td ><center><input type="number" name="speroid7" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass7" name="sclass7" onchange="myFunction7()"></select></td>
+	<td><select id="ssub7" name="ssub7" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown7" name="sstaff7"></select></td>
+	
+</tr>
+<tr>
+	<td ><input type="date" name="sdate8"></td>
+	<td ><center><input type="number" name="speroid8" style="width: 7em" min="1" max="8"></center></td>
+	<td><select id="allclass8" name="sclass8" onchange="myFunction8()"></select></td>
+	<td><select id="ssub8" name="ssub8" style="width:100px;"></select></td>
+	<td><select id="dynamicDropdown8" name="sstaff8"></select></td>
+	
+</tr>
+
+
+</table>
+<!-- <table id="notusecompensation"></table> -->
+<button class="w3-button w3-blue w3-round-large" type="submit">Apply</button>
+</center>
+<script>
+function weightConverter(valNum) {
+	
+    
+	console.log($('#subject').val());
+	var postData = {
+        clas: $('#subject').val()
+		
+        
+      };
+	  $.post("/subject", postData,
+        function(data) {
+		console.log(data);
+		
+
+ 
+ 
+ 
+         
+var select = $("#subject");
+          select.children().remove();              
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].id, text: data[i].name}));
+}
+ 
+});
+
+
+}
+</script>
+<script>
+
+
+function myleave() {
+	//<td><select id="dynamicDropdown" name="sstaff1"></select></td>
+	// /".concat(k)"\
+	
+	//<p align="right">
+//<input type='button' value='+' onclick="myleave()">
+//</p>
+
+    var table = document.getElementById("Table");
+	var k = document.getElementById('Table').rows.length;
+	
+	$.get("/allusers",function(data){
+
+ 
+ 
+ 
+          console.log(data.length);
+var select = $("#dynamic1/".concat(k)"\");
+          select.children().remove();              
+for(var i=0;i<data.length; i++)
+{
+ select.append($('<option >', {value: data[i].id, text: data[i].name+"("+data[i].dept+")"}));
+}
+ 
+});
+
+	
+    var row = table.insertRow(k);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	var cell5 = row.insertCell(4);
+	//var cell6 = row.insertCell(5);
+	
+	cell1.innerHTML = "<input type='date' name='" + "sdate".concat(k-5) + "' >";
+    cell2.innerHTML = "<input type='text' name='" + "speroid".concat(k-5) + "'>";
+	cell3.innerHTML = "<input type='text' name='" + "sclass".concat(k-5) + "'>";
+	cell4.innerHTML = "<input type='text' name='" + "ssub".concat(k-5) + "'>";
+	//cell5.innerHTML = "<input type='text' name='" + "sstaff".concat(k-5) + "'>";
+	cell5.innerHTML = "<select id='dynamic".concat(k)+"' name='" + "sstaff".concat(k-5) + "'></select>";
+	//cell6.innerHTML ="<input type='button' class='w3-button w3-red w3-round-large' value='Delete' onclick='deleteRow(this)'>";
+}
+
+function deleteRow(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("Table").deleteRow(i);
+}
+
+</script>
+
+</body>
+</html>

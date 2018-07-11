@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+  
+  <link rel='stylesheet prefetch' href='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc3/angular-material.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+	  <link rel="stylesheet" href="css/dropdown.css">
+	  
+
+</head>
+
+<body>
+
+  <div ng-controller="DemoCtrl" ng-cloak="" class="md-inline-form" ng-app="MyApp" layout="column" layout-sm="row" layout-align="center center" layout-align-sm="start start" layout-fill>
+		<md-content id="SignupContent" class="md-whiteframe-10dp" flex-sm>
+				<md-toolbar flex id="materialToolbar">
+						<div class="md-toolbar-tools"> <span flex=""></span> <span class="md-headline" align="center">Create User</span> <span flex=""></span> </div>
+				</md-toolbar>
+				<div layout-padding="">
+						<div></div>
+						<form name="userForm" method="POST" action="/"  >
+								<input type="hidden" name="action" value="signup" />
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Name<font color="red">*</font></label>
+												<input  name="name" required type="text"  placeholder="Name" required>
+												
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>Mobile Number<font color="red">*</font></label>
+												<input  name="mobilenumber" type="text"  placeholder="Mobile Number" required>
+												
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<p style="font-size: 12px; margin-left: 3px; margin-top: 18px;">Gender<font color="red">*</font>: </p>
+										<input type="hidden" name="gender"  required value="{{user.gender}}" />
+										<md-radio-group style="margin: 12px 0 19px;" ng-model="user.gender" required>
+												<md-radio-button value="Male" class="md-primary">Male</md-radio-button>
+												<md-radio-button value="Female">Female</md-radio-button>
+										</md-radio-group>
+										<md-input-container flex-gt-sm="60">
+												<label>DOB<font color="red">*</font></label>
+												<input type="date"  name="dob"   placeholder="Date of Birth" required />
+												
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Email<font color="red">*</font></label>
+												<input type="email" name="usersmail"  placeholder="someone@example.com" required />
+												
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Password<font color="red">*</font></label>
+												<input name="userspassword"  type="password" placeholder="********"  required minlength="6" maxlength="15" >
+												
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>Staffid<font color="red">*</font></label>
+												<input name="staffid"  type="text" placeholder="staffid" required>
+												
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+											<!-- 
+												<input type="text" id="t1" name="desi" list="l1" required
+														   pattern="[Oo]ffice|[pP]rofessor|[aA]ssigent-Professor|[hH]HOD|[pP]principal|[aA]AO|[cC]CO">
+													<datalist id="l1">
+													  <option value="office">Office</option>
+												  <option value="professor">Professor</option>
+												  <option value="Assigent-Professor">Assigent-Professor</option>
+												  <option value="hod">HOD</option>
+												  <option value="principal">Principal</option>
+												  <option value="ao">AO</option>
+												  <option value="co">CO</option>
+													</datalist> -->
+													<div class="selectdiv " >
+												<select name="desi" class="fa fa-user input-icon" required>
+												<option value="">Designation</option>
+												  <option value="Assistant Professor">Assistant Professor</option>
+												  <option value="Asst Prof(Sr grade)">Asst Prof(Sr grade)</option>
+												  <option value="Associate Professor">Associate Professor</option>
+												  <option value="professor">Professor</option>
+												  <option value="Lab Instructor">Lab Instructor</option>
+												  <option value="Lab Attender">Lab Attender</option>
+												  <option value="Lab Assistant">Lab Assistant</option>
+												  <option value="Lab Technician">Lab Technician</option>
+												  <option value="hod">HOD</option>
+												  <option value="principal">Principal</option>
+												  <option value="ao">AO</option>
+												  <option value="co">CO</option>
+												</select>
+											</div>
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+										<div class="selectdiv " >
+												<select name="dept" class="fa fa-user input-icon" required>
+												<option value="">Department</option>
+												  <option value="ece">ECE</option>
+												  <option value="eee">EEE</option>
+												  <option value="mech">Mech</option>
+												  <option value="cse">CSE</option>
+												  <option value="ice">ICE</option>
+												  <option value="civil">Civil</option>
+												  <option value="auto">Auto</option>
+												  <option value="office">Office</option>
+												  <option value="all">All</option>
+												</select>
+										</div>
+										</md-input-container>
+										
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>casual Leave<font color="red">*</font></label>
+												<input name="casualavail"  type="text"required>
+												
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>vacation Leave<font color="red">*</font></label>
+												<input name="vacationavail"  type="text" required>
+												
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>onduty<font color="red">*</font></label>
+												<input name="ondutyavail"  type="text" required>
+												
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>permission Leave<font color="red">*</font></label>
+												<input name="permissionavail"  type="text" required>
+												
+										</md-input-container>
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Leave layer<font color="red">*</font></label>
+												<input name="leavelayer"  type="text" required>
+												
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>permission Layer<font color="red">*</font></label>
+												<input name="permissionlayer"  type="text" required>
+												
+										</md-input-container>
+								</div>
+								<md-button class="md-raised md-primary" style="width:100%; margin: 0px 0px;" type="submit" ng-disabled="userForm.$invalid" name="submit">Submit</md-button>
+								
+						</form>
+				</div>
+		</md-content>
+</div>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+<script src='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc3/angular-material.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+</body>
+
+</html>

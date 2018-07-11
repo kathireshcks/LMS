@@ -1,0 +1,146 @@
+n<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$.get("/ld",function(data){
+
+$("#cas").html(": "+data[0].casual);
+$("#vac").html(": "+data[0].vacation);
+$("#ond").html(": "+data[0].onduty);
+$("#per").html(": "+data[0].permission);
+$("#casa").html(": "+data[0].casualavail);
+$("#vaca").html(": "+data[0].vacationavail);
+$("#onda").html(": "+data[0].ondutyavail);
+$("#pera").html(": "+data[0].permissionavail);
+$("#llp").html(": "+data[0].llb);
+$("#compensation").html(": "+data[0].Compensation);
+var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+var d = new Date();
+var n = d.getFullYear();
+var pre=n-1;
+var m = d.getMonth();
+var string=d.toDateString();
+var sm=m+1;
+$("#month").html(m);
+$("#date").html(d);
+//$("#year1").html("Previous Leave Taken during "+pre+"-"+n+":");
+$("#year1").html("Previous Leave Availed during current year:");
+var da = d.getDate();
+$("#date2").html("Leave Eligible as on " +string);
+$("#date3").html("Permission Availed during  " +monthNames[m]+","+n);
+$("#date4").html(" Permission Eligible for " +monthNames[m]+","+n);
+$("#date5").html(" Loss of Pay Leave taken till  " +string);
+$("#date6").html(" Compensation Leave as on " +string);
+
+});
+});
+</script>
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav><div>
+<center><h2>Leave Details</h2></center></div>
+
+	  </div>
+	  <h7><table height="300" width="930" >
+<tr>
+	
+	<td colspan="3"><div id="year1"></div></td>
+</tr>
+<tr>
+<td width="100"></td>
+<td width="250">Casual Leave</td>
+<td><div id="cas"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>Vacation</td>
+<td><div id="vac"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>On Duty</td>
+<td><div id="ond"></div></td>
+</tr><tr><td>&nbsp;</td></tr>
+<tr>
+<td colspan="3"><div id="date2"></div></td>
+</tr>
+<td></td>
+<td>Casual Leave</td>
+<td><div id="casa"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>Vacation</td>
+<td><div id="vaca"></div></td>
+</tr>
+<td></td>
+<td>On Duty</td>
+<td><div id="onda"></div></td>
+</tr>
+<tr> &nbsp;</tr>
+<tr> &nbsp;</tr>
+<tr>
+	<tr><td>&nbsp;</td></tr>
+	<td colspan="2"> <div id="date3"></div></td>
+
+
+
+<td><div id="per"></div></td>
+</tr><tr><td>&nbsp;</td></tr>
+<tr>
+<td colspan="2"> <div id="date4"></div></td>
+<td><div id="pera"></div></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td colspan="2"> <div id="date5"></div>   </td>
+<td><div id="llp"></div></td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td colspan="2">  <div id="date6"></div>  </td>
+<td><div id="compensation"></div></td>
+</tr>
+
+
+
+</table>
+</h7>
+</body>
+</html>

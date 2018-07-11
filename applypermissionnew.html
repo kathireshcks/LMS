@@ -1,0 +1,140 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$.get("/ld",function(data){
+console.log(data);
+$("#cas").html(": "+data[0].casual);
+$("#vac").html(": "+data[0].vacation);
+$("#ond").html(": "+data[0].onduty);
+$("#per").html(": "+data[0].permission);
+$("#casa").html(": "+data[0].casualavail);
+$("#vaca").html(": "+data[0].vacationavail);
+$("#onda").html(": "+data[0].ondutyavail);
+$("#pera").html(": "+data[0].permissionavail);
+
+var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+var d = new Date();
+var n = d.getFullYear();
+var pre=n-1;
+var m = d.getMonth();
+var string=d.toDateString();
+var sm=m+1;
+$("#month").html(m);
+$("#date").html(d);
+//$("#year1").html("Previous Leave Taken during "+pre+"-"+n+":");
+$("#year1").html("Previous Leave Availed during current year:");
+var da = d.getDate();
+$("#date2").html("Leave Eligible as on "+da+"."+sm+"."+n+":");
+$("#date3").html("Permission Availed during  " +monthNames[m]+","+n);
+$("#date4").html(" Permission Eligible for " +monthNames[m]+","+n);
+$("#date5").html(" Loss of Pay Leave taken till  " +string);
+$("#date6").html(" Compensation from " +string);
+
+});
+});
+</script>
+<script>
+$(document).ready(function(){
+$.get("/flash",function(data){
+if(data.length>0){
+console.log(data);
+alert(data);
+}
+});
+});
+</script>
+
+
+</head>
+<body>
+
+
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/alteracceptance">Alter Acceptance</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+<div>
+<center><h2>Apply Permission</h2></center></div>
+
+	  </div>
+<h7> 
+	
+<table height="100" width="400" >
+<tr>
+	
+	<td colspan="3"><div id="date3"></td>
+
+
+
+<td><div id="per"></div></td>
+</tr>
+<tr>
+<td colspan="3"> <div id="date4"></td>
+<td><div id="pera"></div></td>
+</tr>
+</table>
+
+</h7>
+
+<h7><br><br>
+	<form action="/applypermission" method="post">
+<center>
+<table  id="myTable" height="150" width="500">
+<tr>
+
+<td >Date<font color="red">*</font></td>
+<td >Time<font color="red">*</font></td>
+</tr>
+<tr>
+
+<td><input type="date" name="date" required></td>
+<td><select name="time" required>
+	<option width="200" value="">select</option>
+	<option value="mor">FN(9:00 to 10:00 am)</option>
+	<option value="afn">AN(3:30 to 4:30 pm)</option></td>
+</tr>
+<tr>
+</table></h7>
+</center><br><br>
+<center><button class="w3-button w3-blue w3-round-large" type="submit">Apply</button></center>
+</form>
+
+
+
+</body>
+</html>

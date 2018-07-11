@@ -1,0 +1,200 @@
+<html>
+<head>
+<link rel="stylesheet" href="v3.css">
+<link rel="stylesheet" href="v4.css">
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="./jquery.min.js"></script>
+<script>
+
+$(function () {
+    $("#user_profile_form").submit(function(event) {
+      event.preventDefault();
+      var postData = {
+        from: $('#from').val(),
+        to: $('#to').val(),
+		LLP: $('#LLP').val()
+        
+      };
+      $.post("/reportdate", postData,
+        function(data) {
+//		console.log(data);
+		var rowCount = mytable.rows.length;
+        for (var i = rowCount - 1; i >= 0; i--) {
+            mytable.deleteRow(i);
+			
+        }
+		$("#search").html(" ");
+		$("#export").html(" ");
+			$("#nodata").html(" ");
+		if(data.length>0){
+		 $("#search").html("<input class=\"form-control\" id=\"myInput\" type=\"text\" placeholder=\"Search..\">");
+		
+			var table = document.getElementById("mytable");
+				for(var i=-1;i<data.length;i++)
+				{
+				//console.log("from"+data[i].fromdate);
+				//console.log("to"+data[i].todate);
+					var row = table.insertRow(i+1);
+					var cell = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+					var cell4 = row.insertCell(3);
+					var cell5 = row.insertCell(4);
+					var cell6 = row.insertCell(5);
+					var cell7 = row.insertCell(6);
+					var cell8 = row.insertCell(7);
+					var cell9 = row.insertCell(8);
+					var cell10 = row.insertCell(9);
+					var cell11 = row.insertCell(10);
+					var cell12 = row.insertCell(11);
+					
+					if(i==-1){
+							
+							cell.innerHTML = "<strong>No</strong>";
+							cell2.innerHTML = "<strong>Name</strong>";
+							cell3.innerHTML = "<strong>department</strong>";
+							cell4.innerHTML = "<strong>from</strong>";
+							cell5.innerHTML = "<strong>To</strong>";
+							cell6.innerHTML = "<strong>Type</strong>";
+							cell7.innerHTML = "<strong>Number of Days</strong>";
+							cell8.innerHTML = "<strong>purpose</strong>";
+							cell9.innerHTML = "<strong>Hod</strong>";
+							cell10.innerHTML = "<strong>Principal</strong>";
+							cell11.innerHTML = "<strong>Ao</strong>";
+							cell12.innerHTML = "<strong>Co</strong>";
+							
+								
+							}else{
+							
+					cell.innerHTML = i+1;
+					cell2.innerHTML = data[i].name;
+					cell3.innerHTML = data[i].dept;
+					cell4.innerHTML = data[i].fromdate;
+					cell5.innerHTML = data[i].todate;
+					cell6.innerHTML = data[i].type;
+					cell7.innerHTML = data[i].numberofdays;
+					cell8.innerHTML = data[i].purpose;
+					cell9.innerHTML = data[i].hod;
+					cell10.innerHTML = data[i].principal;
+					cell11.innerHTML = data[i].ao;
+					cell12.innerHTML = data[i].co;
+
+					}
+					// cell4.innerHTML = "<button class=\"budet\" onclick=\"location.href=\'/delete/"+data[i]._id+"\';\">Delete</button>";
+                    //cell7.innerHTML = "<button class=\"budet\" onclick=\"del('"+data[i]._id+"','"+data[i].username+"');\">Delete</button>";
+					//cell5.innerHTML = "<button class=\"budet\" onclick=\"ch('"+data[i].username+"','"+data[i]._id+"');\">Edit</button>";
+				}
+			$("#export").html("<button id=\"btn\" class=\"w3-button w3-red w3-round-large\" onclick=\"location.href=\'/export';\">Export</button>");
+		
+
+		}
+		else{
+			$("#nodata").html("No data find");
+		
+		}
+          //var json = jQuery.parseJSON(data);
+          /*if (json.ExceptionMessage != undefined) {
+            alert(json.ExceptionMessage); // the exception from the server
+            $('#' + json.Field).focus(); // focus the specific field to fill in
+          }(*/
+            //alert(json); // the success message from server
+          
+       });
+	   
+    });
+		
+});
+
+</script>
+
+
+</head>
+<body>
+
+
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leavedetails">Leave Details</a></li>
+	      <li><a href="/appliedlve">Applied Leave</a></li>
+	      <li><a href="/appliedper">Applied Permission</a></li>
+	      <li><a href="/applyleave">Apply Leave</a></li>
+	      <li><a href="/applyper">Apply Permission</a></li>
+	      <li><a href="/profile">Profile</a></li>
+		  
+		  </ul>
+			</li>
+			<li><a href="/reportbyid"><span class="glyphicon glyphicon-list-alt"> ReportByid</a></li>
+      <li><a href="/profile"><span class="glyphicon glyphicon-user"> Profile</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/">Leave Management</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<div>
+<div>
+<center><h2>Report</h2></center></div>
+
+	  </div>
+ 
+	
+
+	<form id="user_profile_form">
+<center>
+<table  height="150" width="500">
+<tr>
+
+<td >Month</td>
+<td >Year</td>
+</tr>
+<tr>
+
+<td><input type="number" name="from" id="from" min="1" max="12" required></td>
+<td><input type="text" name="to" id="to" placeholder="YYYY" minlength="4" required></td>
+<td><select id="LLP"><option value="All">ALL</option><option value="LLP">LLP</option></select></td>
+</tr>
+<tr>
+</table></h7>
+</center><br><br>
+<center><button class="w3-button w3-blue w3-round-large" type="submit" id="submit">Find</button></center>
+</form>
+
+<center>
+<div id="nodata"></div>
+	  <div class="container">
+  <div id="search"></div><!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+  <br>
+
+  <table class="table table-bordered table-striped"  id="mytable">
+  <tr>
+</tr>
+</table>
+<div id="export"></div>
+</center>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#mytable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>
